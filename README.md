@@ -4,6 +4,11 @@ An AI-powered demand forecasting application developed for the Gen AI Hackathon 
 
 The application uses the UCI Online Retail Dataset containing over 541,000 transactions. It combines data cleaning, revenue aggregation, Prophet-based forecasting, interactive analytics, and Google Gemini-powered narrative generation in an interactive Streamlit dashboard.
 
+## Live Application
+
+- **Live Dashboard:** https://ai-demand-forecast-narrative-generator.streamlit.app/
+- **GitHub Repository:** https://github.com/vaishzz-18/ai-demand-forecast-narrative-generator
+
 ## Objectives
 
 - Analyze historical retail transactions and revenue trends.
@@ -17,15 +22,15 @@ The application uses the UCI Online Retail Dataset containing over 541,000 trans
 ## Key Features
 
 - **Demand Forecasting:** Explore historical revenue and future forecasts using Prophet-based time-series analysis.
-- **Interactive Forecast Horizon:** Adjust the forecast horizon from 1 to 12 weeks.
+- **Interactive Forecast Horizon:** Adjust the forecast horizon and explore available forecast results.
 - **Revenue Analytics:** View historical revenue summaries, peak periods, and overall trends.
 - **Country-Level Analysis:** Filter sales by country and explore revenue distribution.
 - **Product Analytics:** Identify top-selling products based on quantity sold.
-- **Inventory Predictions:** Estimate 30-day stock requirements for the top 10 products using historical sales run rates.
+- **Inventory Predictions:** Estimate 30-day stock requirements for selected products using historical sales run rates.
 - **AI Executive Narratives:** Use Google Gemini 1.5 Flash to generate business summaries and actionable recommendations.
 - **Forecast Visualizations:** Explore historical revenue, predicted revenue, confidence intervals, seasonality, and Prophet components.
-- **Report Export:** Download generated executive narratives and inventory action items as a text file.
-- **Fallback Narrative Generation:** Provide a template-based narrative when the Gemini API key is unavailable or the API request fails.
+- **Report Export:** Download generated executive narratives and inventory action items.
+- **Fallback Narrative Generation:** Provide a template-based narrative when the Gemini API key is unavailable or an API request fails.
 
 ## System Workflow
 
@@ -35,12 +40,12 @@ The application follows this workflow:
 2. **Data Cleaning:** Remove transactions with non-positive quantities and records with missing product descriptions.
 3. **Feature Engineering:** Calculate transaction revenue using quantity multiplied by unit price.
 4. **Revenue Aggregation:** Analyze historical weekly revenue and derive business summary statistics.
-5. **Time-Series Forecasting:** Use Prophet-generated forecast outputs to estimate future revenue and associated confidence intervals.
+5. **Time-Series Forecasting:** Use precomputed Prophet forecast outputs to estimate future revenue and associated confidence intervals.
 6. **Interactive Analytics:** Filter countries and analyze revenue distribution, product sales, and projected inventory requirements.
 7. **AI Narrative Generation:** Send forecast statistics to Google Gemini to generate an executive narrative and inventory action items.
-8. **Report Export:** Display the generated report and allow users to download it as a text file.
+8. **Report Export:** Display the generated report and allow users to download it.
 
-The current application loads precomputed Prophet forecasts and a saved model file. The dashboard's interactive forecast horizon selects from the available forecast results; it does not retrain the forecasting model on every interaction.
+The current application loads precomputed Prophet forecasts and a saved model file. The interactive forecast horizon selects from the available forecast results; it does not retrain the forecasting model on every interaction.
 
 ## Technology Stack
 
@@ -107,34 +112,66 @@ The application also includes a template-based fallback narrative when the Gemin
 
 AI-generated recommendations should be reviewed against actual business conditions before being used for operational decisions.
 
+## Screenshots
+
+### 1. Dashboard Overview
+
+![AI Demand Forecast Dashboard Overview](screenshots/1.png)
+
+### 2. Forecast Analysis
+
+![Demand Forecast Analysis](screenshots/2.png)
+
+### 3. Business Analytics
+
+![Business Analytics](screenshots/3.png)
+
+### 4. Forecast Visualizations
+
+![Forecast Visualizations](screenshots/4.png)
+
+### 5. AI-Generated Business Insights
+
+![AI-Generated Business Insights](screenshots/5.png)
+
+### 6. Additional Dashboard View
+
+![Additional Dashboard View](screenshots/6.png)
+
 ## Repository Structure
 
 ```text
 ai-demand-forecast-narrative-generator/
 ├── app.py                    # Streamlit dashboard and application logic
 ├── chart_builder.py           # Forecast and analytics visualizations
-├── narrative_generator.py    # Gemini API and fallback narrative generation
+├── narrative_generator.py     # Gemini API and fallback narrative generation
+├── screenshots/
+│   ├── 1.png
+│   ├── 2.png
+│   ├── 3.png
+│   ├── 4.png
+│   ├── 5.png
+│   └── 6.png
 ├── Online Retail.xlsx         # Retail transaction dataset
-├── prophet_model.pkl         # Saved Prophet model artifact
-├── weekly_revenue.csv        # Historical weekly revenue
-├── forecast_output.csv       # Precomputed forecast results
-├── stats_summary.csv         # Forecast and business summary statistics
+├── prophet_model.pkl          # Saved Prophet model artifact
+├── weekly_revenue.csv         # Historical weekly revenue
+├── forecast_output.csv        # Precomputed forecast results
+├── stats_summary.csv          # Forecast and business summary statistics
 ├── forecast_chart.png        # Forecast visualization
 ├── monthly_seasonality.png   # Seasonality visualization
 ├── prophet_components.png    # Prophet component visualization
 ├── weekly_revenue_raw.png    # Historical revenue visualization
-├── forecast_output.csv
+├── requirements.txt           # Python dependencies
 ├── .gitignore
 ├── LICENSE
-├── README.md
-└── requirements.txt          # Python dependencies
+└── README.md
 ```
 
 ## Getting Started
 
 ### Prerequisites
 
-- Python 3.10 or another Python version compatible with the project dependencies
+- Python compatible with the project dependencies
 - pip
 - A Google Gemini API key for AI-powered narrative generation
 
@@ -184,16 +221,13 @@ Open the local URL displayed in the terminal to access the dashboard.
 
 ## Deployment
 
-The application is designed to be hosted using Streamlit Community Cloud or another platform that supports Streamlit applications.
+The application is hosted using Streamlit Community Cloud.
 
-Deployment requires:
+- **Live Application:** https://ai-demand-forecast-narrative-generator.streamlit.app/
+- **Hosting Platform:** Streamlit Community Cloud
+- **Source Code:** [GitHub Repository](https://github.com/vaishzz-18/ai-demand-forecast-narrative-generator)
 
-- A compatible Python environment
-- The project's Python dependencies
-- Access to the required dataset and precomputed forecast files
-- Secure configuration of the Gemini API key
-
-The live application URL will be added here after successful deployment.
+The deployed application uses Streamlit's secrets configuration for environment variables such as the Gemini API key.
 
 ## Limitations
 
@@ -210,7 +244,8 @@ The live application URL will be added here after successful deployment.
 **Project:** AI Demand Forecast Narrative Generator  
 **Event:** Gen AI Hackathon 2026  
 **Domain:** Supply Chain and Logistics  
-**Repository:** [GitHub — AI Demand Forecast Narrative Generator](https://github.com/vaishzz-18/ai-demand-forecast-narrative-generator)
+**Repository:** [GitHub — AI Demand Forecast Narrative Generator](https://github.com/vaishzz-18/ai-demand-forecast-narrative-generator)  
+**Live Dashboard:** [Open Application](https://ai-demand-forecast-narrative-generator.streamlit.app/)
 
 ---
 
